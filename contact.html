@@ -9,52 +9,47 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
-        rel="stylesheet">
-    <script defer src="script.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <script defer src="contact.js"></script>
 </head>
 
 <body>
-    <div id="navbar">
-        <!-- Your navbar code goes here (same as on the homepage) -->
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <!-- Add other links if needed -->
-            </ul>
-        </nav>
-    </div>
+    <div id="navbar"></div>
 
     <main>
-        <section class="hero">
-            <div class="hero-text">
-                <h1 class="typewrite-container">
-                    Let's talk about 
-                    <span class="typewrite" data-period="2000" data-type='["design.", "food.", "k-dramas.", "pastel colors.", "wire flowers."]'>
-                      <span class="wrap"></span>
-                    </span>
-                </h1>                  
-                <p>If you'd like to get in touch or collaborate, feel free to reach out to me using the information
-                    below!</p>
+        <section class="hero-2">
+            <div class="hero-text typewrite-text">
+                <h1 class="typewrite" data-period="2000" data-type='["design.", "a product idea.", "k-dramas.", "food."]'>
+                    Let's talk about <span class="wrap"></span>
+                </h1>
             </div>
         </section>
-
+    
         <section class="contact-info">
-            <div class="section-header">
-                <h2>Contact Details</h2>
-            </div>
-
             <div class="contact-details">
                 <!-- Email Section -->
                 <div class="contact-card">
+                    <div class="icon-wrapper">
+                        <i class="fa-regular fa-envelope"></i>
+                    </div>
                     <h3>Email</h3>
-                    <p>You can reach me at <a href="mailto:rosechen@example.com">rosechen@example.com</a></p>
+                    <p><a href="mailto:r385chen@uwaterloo.ca">r385chen@uwaterloo.ca</a></p>
+                </div>
+
+                <!-- LinkedIn Section -->
+                <div class="contact-card">
+                    <div class="icon-wrapper">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </div>
+                    <h3>LinkedIn</h3>
+                    <p><a href="https://www.linkedin.com/in/rose-chen-586681135/" target="_blank">Connect with me</a></p>
                 </div>
             </div>
         </section>
     </main>
+    <div id="footer"></div>
 </body>
 
 </html>

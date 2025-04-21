@@ -23,19 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
     hero.style.setProperty("--x", `${x}%`);
     hero.style.setProperty("--y", `${y}%`);
   });
-
-  //View My Work button
-  const heroButton = document.querySelector('.hero-button');
-  if (heroButton) {
-    heroButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      document.querySelector('#projects').scrollIntoView({
-        behavior: 'smooth'
-      });
-    });
-  }
-
-  //Typewriter effect
+  
+  //Typing
   class TxtType {
     constructor(el, toRotate, period) {
         this.toRotate = toRotate;
@@ -90,31 +79,3 @@ window.onload = function () {
     css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff }";
     document.body.appendChild(css);
 };
-
-// Navbar effect
-
-document.addEventListener('DOMContentLoaded', () => {
-  const currentLocation = window.location.pathname;
-  const navLinks = document.querySelectorAll('.nav-link');
-  
-  navLinks.forEach(link => {
-      if (link.getAttribute('href') === currentLocation.split('/').pop()) {
-          link.classList.add('active');
-      }
-  });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  const currentLocation = window.location.pathname;
-  const navLinks = document.querySelectorAll('.nav-link');
-  
-  navLinks.forEach(link => {
-      if (link.getAttribute('href') === currentLocation.split('/').pop()) {
-          link.classList.add('active');
-      }
-      // Special case for projects section in index.html
-      if (currentLocation.endsWith('index.html') && link.getAttribute('href') === 'index.html#projects') {
-          link.classList.remove('active');
-      }
-  });
-});
