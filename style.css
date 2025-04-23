@@ -186,15 +186,19 @@ body {
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     overflow: hidden;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     flex: 1 1 calc(50% - 1rem);
     max-width: calc(50% - 1rem);
     box-sizing: border-box;
     margin-bottom: 2rem;
+    text-decoration: none;
+    color: inherit;
+    display: block;
   }
   
   .project-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
   }
 
   .project-link {
@@ -210,6 +214,11 @@ body {
     width: 100%;
     height: auto;
     display: block;
+    transition: transform 0.3s ease;
+  }
+  
+  .project-card:hover img {
+    transform: scale(1.02);
   }
   
   .project-card h3 {
@@ -230,6 +239,52 @@ body {
     flex: 1 1 100%;
     max-width: calc(100% - 2rem); 
   }
+
+
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.5rem 1rem 1rem;
+}
+
+.project-tag {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  background: linear-gradient(90deg, #e4c8ff20, #fff3c220);
+  border: 1px solid #8F98E2;
+  border-radius: 20px;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.8rem;
+  color: #515680;
+  transition: all 0.2s ease;
+}
+
+.project-tag:hover {
+  background: linear-gradient(90deg, #e4c8ff40, #fff3c240);
+  transform: translateY(-1px);
+}
+
+/* Update project card styles */
+.project-card h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 1rem 1rem 0.5rem; /* Adjusted margin */
+  color: #111;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .project-tag {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+  }
+  
+  .tag-container {
+      margin: 0.4rem 1rem 0.8rem;
+  }
+}
 
 .hero-text {
   text-align: center;
@@ -337,32 +392,49 @@ color: #515680;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: #666;
+    display: block;
 }
 
 .contact-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    color: #000;
 }
 
 .icon-wrapper {
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
     background: #f8f8f8;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 1.5rem;
-    transition: background-color 0.3s ease;
+    margin: 0 auto 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-.contact-card:hover .icon-wrapper {
-    background: #f0f0f0;
+.icon-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, #e4c8ff, #fff3c2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .icon-wrapper i {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     color: #333;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
 }
 
 .contact-card h3 {
@@ -437,11 +509,15 @@ color: #515680;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   min-width: 250px;
+  text-decoration: none;
+  color: #666;
+  display: block;
 }
 
 .cta-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  color: #000;
 }
 
 .cta-card .icon-wrapper {
@@ -534,15 +610,6 @@ color: #515680;
   transition: color 0.3s ease;
 }
 
-.nav-links li a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 400;
-  padding: 0.5rem 0;
-  position: relative;
-  transition: color 0.3s ease;
-}
-
 .nav-links li a::after {
   content: '';
   position: absolute;
@@ -628,4 +695,30 @@ color: #515680;
   .hero-2 {
     height: 45vh;
   }
+}
+
+/* Add target="_blank" styling if needed */
+.project-card[target="_blank"] {
+    cursor: alias;
+}
+
+/* Hover effects */
+.cta-card:hover .icon-wrapper::before,
+.contact-card:hover .icon-wrapper::before {
+    opacity: 1;
+}
+
+.cta-card:hover .icon-wrapper i,
+.contact-card:hover .icon-wrapper i {
+    color: #515680;
+}
+
+/* For the larger icons in the contact page */
+.contact-card .icon-wrapper {
+    width: 70px;
+    height: 70px;
+}
+
+.contact-card .icon-wrapper i {
+    font-size: 1.8rem;
 }
