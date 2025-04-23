@@ -155,4 +155,285 @@
     line-height: 1.6;
     color: #333;
     min-height: 100vh;
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), #FF8C42, #FFE5B4);
+}
+
+/* Add these styles */
+.project-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.hero-card {
+    text-align: center;
+    padding: 3rem 2rem;
+}
+
+.hero-card h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: #666;
+    margin-bottom: 3rem;
+}
+
+.project-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.meta-item {
+    text-align: left;
+}
+
+.meta-item h3 {
+    color: #8F98E2;
+    margin-bottom: 0.5rem;
+}
+
+.findings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.finding-item {
+    background: rgba(143, 152, 226, 0.05);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.process-stage {
+    margin-bottom: 3rem;
+}
+
+.feature-lists {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.features-table {
+    margin-top: 1.5rem;
+}
+
+.feature-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.feature-icon {
+    font-size: 1.5rem;
+}
+
+.learnings-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 0rem;
+}
+
+.learnings-list li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.learnings-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #8F98E2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .project-container {
+        padding: 4rem 1rem;
+    }
+
+    .hero-card h1 {
+        font-size: 2.5rem;
+    }
+
+    .subtitle {
+        font-size: 1.2rem;
+    }
+
+    .card {
+        padding: 1.5rem;
+    }
+}
+
+/* Add these new styles and override existing ones */
+.overview-card {
+    padding: 3rem;
+}
+
+.overview-header {
+    display: flex;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.project-logo {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+}
+
+.overview-text {
+    flex: 1;
+}
+
+.overview-text h1 {
+    font-size: 3rem;
+    margin: 0;
+    color: #333;
+}
+
+.project-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+}
+
+.project-tag {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background: linear-gradient(90deg, #e4c8ff20, #fff3c220);
+    border: 1px solid #8F98E2;
+    border-radius: 20px;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.8rem;
+    color: #515680;
+    transition: all 0.2s ease;
+}
+
+.project-tag:hover {
+    background: linear-gradient(90deg, #e4c8ff40, #fff3c240);
+    transform: translateY(-1px);
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.achievement-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid #eee;
+}
+
+.achievement-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.achievement-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #8F98E2;
+    margin-bottom: 0.5rem;
+}
+
+.achievement-label {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .overview-header {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .project-logo {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+    }
+
+    .overview-text h1 {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    .project-description {
+        text-align: center;
+    }
+
+    .tag-container {
+        justify-content: center;
+    }
+
+    .overview-card {
+        padding: 2rem;
+    }
+
+    .project-tag {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.6rem;
+    }
+    
+    .tag-container {
+        margin: 0.4rem 0 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-logo {
+        width: 160px;
+        height: 160px;
+    }
+
+    .overview-text h1 {
+        font-size: 2rem;
+    }
+
+    .achievement-number {
+        font-size: 2rem;
+    }
 }
