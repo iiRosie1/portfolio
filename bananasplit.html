@@ -30,7 +30,11 @@
                             <span class="project-tag">User Research</span>
                             <span class="project-tag">Figma</span>
                         </div>
-                        <p class="project-description">Working in a group of four, for our GBDA 210: Introduction to User Experience course, we created Banana Split. A collaborative grocery shopping app designed to help university students save money and reduce food waste by sharing bulk purchases.</p>
+                        <p class="project-description">Working in a group of four, over the course of 3 months for our GBDA 210: Introduction to User Experience course, we created Banana Split. A collaborative grocery shopping app designed to help university students save money and reduce food waste by sharing bulk purchases.</p>
+                        <a href="https://www.figma.com/proto/SCwXhpdWmmtM1K7UQVkYXL/Milestone-2?node-id=297-374&starting-point-node-id=297%3A374&t=6UsaJXNVIknaUZNm-1" target="_blank" rel="noopener noreferrer" class="external-button">
+                            <i class="fas fa-external-link-alt"></i>
+                            View Figma Prototype
+                        </a>
                     </div>
                 </div>
             </section>
@@ -56,7 +60,7 @@
                     </div>
                     <div class="finding-item">
                         <h3>Budget Awareness</h3>
-                        <p>All participants actively budget and look for deals using apps like Flipp—though flyer apps often miss products they need.</p>
+                        <p>All participants actively budget and look for deals using apps like Flipp, though flyer apps often miss products they need.</p>
                     </div>
                     <div class="finding-item">
                         <h3>Transportation Barriers</h3>
@@ -67,6 +71,7 @@
                         <p>Students want smarter, social tools to coordinate trips, split costs, and compare prices before going out.</p>
                     </div>
                 </div>
+                <h3><i>How might we make bulk grocery purchases more financially accessible without encouraging overconsumption or waste?</i></h3>
             </section>
 
             <section class="card">
@@ -74,11 +79,12 @@
                 
                 <div class="process-stage">
                     <h3>Low-Fidelity Prototypes</h3>
+                    <p>We focused on creating an app that makes splitting groceries efficient. Each member created a low-fidelity prototype, before coming together and comparing our ideas.</p>
                     <div class="feature-lists">
                         <div class="feature-column">
                             <h4>Common Features</h4>
                             <ul>
-                                <li>Listings for shared grocery items</li>
+                                <li>Listings for extra grocery items others might have</li>
                                 <li>Profile customization</li>
                                 <li>Grocery cart view</li>
                             </ul>
@@ -95,6 +101,7 @@
 
                 <div class="process-stage">
                     <h3>Key Features</h3>
+                    <p>Our low-fidelity prototypes included too many features designed to help the user save money,</p>
                     <div class="features-table">
                         <div class="feature-row">
                             <div class="feature-content">
@@ -110,18 +117,82 @@
                                 <p>Efficient payment handling in-app</p>
                             </div>
                         </div>
-                        <!-- Add more feature rows similarly -->
                     </div>
+                </div>
+
+                <div class="process-stage">
+                    <h3>Key Insights Gained from Test</h3>
+                    <table class="insights-table">
+                        <thead>
+                            <tr>
+                                <th>Issue</th>
+                                <th>Importance</th>
+                                <th>Solution</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <strong>UI functionality</strong><br>
+                                    Many participants wanted to return to the previous page after entering the chat feature.<br>
+                                    Some of the fonts were a bit too small, especially on the back button.<br>
+                                    Chat background made the texts a bit hard to read.
+                                </td>
+                                <td>
+                                    These issues affect the user’s ability to effectively navigate the app’s features. The font size and chat colour choices affect the readability of the buttons in our app.
+                                </td>
+                                <td>
+                                    We adjusted the font sizes in our app. This will ensure that our font size is readable and, thus, easy to navigate. An additional wiring is also added to the chat page for the “return” function to work across our app.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Payment confirmation</strong><br>
+                                    
+                                </td>
+                                <td>
+                                    This feature is important because we do not want users to make payments they did not mean to. The confirmation page would allow users a chance to cancel the transaction before it is charged onto their account. This ensures users have control over their payments and prevents accidental transactions.
+                                </td>
+                                <td>
+                                    Our app has a separate popup that is prominent enough for the user to confirm they authorize the payment.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Notification urgency</strong><br>
+                                    
+                                </td>
+                                <td>
+                                    The app notifies users to pay their due balance associated with their grocery-getting goals. Without the sense of urgency, users may dismiss the notification or forget about it. Highlighting urgency ensures users take action on important tasks.
+                                </td>
+                                <td>
+                                    On our popups we highlighted the due dates and changed the colour of the boxes or headings to red. This creates a sense of urgency and “danger” of consequence if the user ignores the notification.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Inaccessible search function</strong><br>
+                                    
+                                </td>
+                                <td>
+                                    The search feature makes it easier to add an item to the grocery list rather than inputting the name and details manually. This function saves many users time and personal research efforts. A prominent search function improves usability and reduces user frustration.
+                                </td>
+                                <td>
+                                    The button for this feature is made to be more prominent next to the “add item” button, making its use more obvious.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </section>
 
             <section class="card">
                 <h2>Reflection</h2>
-                <p>Working on Banana Split showed us that affordability alone isn't enough. A good solution needs to fit within students' routines and social lives.</p>
                 <h3>What We Learned</h3>
                 <ul class="learnings-list">
-                    <li>Users value simplicity, trust, and consistency, don't try to overload a bunch of features in your app. Focus on one core feature and design the app around that.</li>
-                    <li>User testing is so so so valuable in gaining insight and ideas you may of missed</li>
+                    <li>Users value simplicity, trust, and consistency, don't try to overload features in your app.</li>
+                    <li>User testing is soooo valuable in gaining insight and issues you may of missed.</li>
+                    <li>Prototyping is an iterative process. Our shift from a Kijiji-like listing system to shared grocery lists showed me how user testing and storyboarding can uncover better ways to match real user behaviors.</li>
                 </ul>
             </section>
         </div>

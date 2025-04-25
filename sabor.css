@@ -558,7 +558,6 @@ main {
     margin: 0;
 }
 
-/* Update the roblox-button styles */
 .roblox-button {
     display: inline-block;
     margin-top: 2rem;
@@ -603,7 +602,6 @@ main {
     }
 }
 
-/* Update overview header and logo styles */
 .overview-header {
     display: flex;
     gap: 3rem;
@@ -612,11 +610,11 @@ main {
 }
 
 .project-logo {
-    width: 300px; /* Increased size */
-    height: 300px; /* Increased size */
-    margin-bottom: 0; /* Removed bottom margin since we want it to align perfectly */
-    object-fit: contain; /* Ensures the image maintains its aspect ratio */
-    flex-shrink: 0; /* Prevents the logo from shrinking */
+    width: 300px;
+    height: 300px; 
+    margin-bottom: 0; 
+    object-fit: contain; 
+    flex-shrink: 0; 
 }
 
 /* Update responsive sizes */

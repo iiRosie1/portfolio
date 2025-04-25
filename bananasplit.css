@@ -158,7 +158,6 @@
     background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), #FF8C42, #FFE5B4);
 }
 
-/* Add these styles */
 .project-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -213,6 +212,56 @@
     margin-bottom: 0.5rem;
 }
 
+.external-button {
+    display: inline-flex;
+    justify-content: center;
+    width: auto;
+    min-width: 200px;
+}
+
+.external-button {
+    display: inline-block;
+    margin-bottom: 1rem;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #8F98E2;
+    background-color: rgba(143, 152, 226, 0.1);
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    color: #8F98E2;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.external-button:hover {
+    background-color: #515680;
+    color: #fafafa;
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(124, 58, 237, 0.3);
+}
+
+.external-button i {
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+}
+
+.external-button:hover i {
+    transform: translateX(2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .external-button {
+        display: inline-flex;
+        justify-content: center;
+        width: auto;
+        min-width: 200px;
+    }
+}
+
 .findings-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -224,6 +273,18 @@
     background: rgba(143, 152, 226, 0.05);
     padding: 1.5rem;
     border-radius: 8px;
+}
+
+.findings-grid .finding-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.findings-grid .finding-item:hover {
+    transform: translateY(-5px);
 }
 
 .process-stage {
@@ -381,6 +442,35 @@
 .achievement-label {
     color: #666;
     font-size: 0.9rem;
+}
+
+.insights-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    overflow: hidden; 
+}
+
+.insights-table th, .insights-table td {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    text-align: left;
+    vertical-align: top;
+}
+
+.insights-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.insights-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.insights-table tr:hover {
+    background-color: #f1f1f1;
 }
 
 /* Responsive adjustments */
