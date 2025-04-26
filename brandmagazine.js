@@ -19,26 +19,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Ensure the flipbook exists before initializing Turn.js
     if (flipbook) {
-        $(flipbook).turn({
-            width: 800, // Width of the flipbook
-            height: 500, // Height of the flipbook
-            autoCenter: true, // Center the flipbook
-            elevation: 50, // Elevation for the page flip effect
-            gradients: true, // Enable gradients for a realistic effect
-            when: {
-                turning: function (event, page, view) {
-                    console.log("Turning to page:", page);
-                },
-            },
-        });
-    }
-});
+        const initializeFlipbook = () => {
+            const screenWidth = window.innerWidth;
 
-// Adjust the flipbook size on window resize
-window.addEventListener("resize", () => {
-    const flipbook = $(".flipbook");
-    if (flipbook.data("turn")) {
-        flipbook.turn("size", 800, 500); // Adjust size as needed
+            // Adjust flipbook size based on screen width
+            let flipbookWidth = 800;
+            let flipbookHeight = 500; // Default aspect ratio: 16:10
+
+            if (screenWidth <= 768) {
+                flipbookWidth = 600;
+                flipbookHeight = flipbookWidth * 0.625; // Maintain aspect ratio
+            }
+
+            if (screenWidth <= 480) {
+                flipbookWidth = 320;
+                flipbookHeight = flipbookWidth * 0.625; // Maintain aspect ratio
+            }
+
+            // Set the container's dimensions
+            const flipbookContainer = document.querySelector(".flipbook-container");
+            flipbookContainer.style.width = `${flipbookWidth}px`;
+            flipbookContainer.style.height = `${flipbookHeight}px`;
+
+            // Initialize Turn.js
+            $(flipbook).turn({
+                width: flipbookWidth,
+                height: flipbookHeight,
+                autoCenter: true,
+                elevation: 50,
+                gradients: true,
+                when: {
+                    turning: function (event, page, view) {
+                        console.log("Turning to page:", page);
+                    },
+                },
+            });
+        };
+
+        // Initialize the flipbook
+        initializeFlipbook();
+
+        // Reinitialize the flipbook on window resize
+        window.addEventListener("resize", () => {
+            if ($(flipbook).data("turn")) {
+                $(flipbook).turn("destroy"); // Destroy the existing flipbook
+            }
+            initializeFlipbook(); // Reinitialize with new dimensions
+        });
     }
 });
 

@@ -169,30 +169,50 @@ footer {
     text-align: center;
 }
 
-  .flipbook-container {
+/* Default Flipbook Styles */
+.flipbook-container {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 2rem auto;
     width: 100%;
     max-width: 800px;
-    height: 500px;
-  }
+    height: auto; /* Allow height to adjust dynamically */
+}
 
-  .flipbook {
+.flipbook {
     width: 100%;
     height: 100%;
-  }
+    position: relative;
+}
 
-  .flipbook .page {
+.flipbook .page {
     width: 100%;
     height: 100%;
     overflow: hidden;
-  }
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 
-  .flipbook .page img {
+.flipbook .page img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensure the entire image is visible */
     display: block;
-  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .flipbook-container {
+        max-width: 600px;
+        height: auto; /* Allow height to adjust dynamically */
+    }
+}
+
+@media (max-width: 480px) {
+    .flipbook-container {
+        max-width: 320px;
+        height: auto; /* Allow height to adjust dynamically */
+    }
+}
