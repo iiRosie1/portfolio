@@ -118,3 +118,60 @@ document.addEventListener('DOMContentLoaded', () => {
       }
   });
 });
+
+// Watch video tooltip
+// Wait for DOM to load
+document.addEventListener('DOMContentLoaded', function() {
+  // Select the Let Us Cook project card (update selector if needed)
+  const letUsCookCard = document.querySelector('a[href*="youtube.com"][class*="project-card"]');
+  const tooltip = document.getElementById('watch-video-tooltip');
+
+  if (letUsCookCard && tooltip) {
+    letUsCookCard.addEventListener('mouseenter', function() {
+      tooltip.style.display = 'block';
+    });
+
+    letUsCookCard.addEventListener('mousemove', function(e) {
+      // Offset so the tooltip doesn't cover the cursor
+      tooltip.style.left = (e.clientX + 18) + 'px';
+      tooltip.style.top = (e.clientY + 12) + 'px';
+    });
+
+    letUsCookCard.addEventListener('mouseleave', function() {
+      tooltip.style.display = 'none';
+    });
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const tooltip = document.getElementById('floating-tooltip');
+
+  // Map: selector => tooltip text
+  const tooltipMap = [
+    {
+      selector: 'a[href*="youtube.com"][class*="project-card"]',
+      text: 'Watch video!'
+    },
+    {
+      selector: 'a[href*="figma.com"][class*="project-card"]',
+      text: 'View on Figma'
+    }
+  ];
+
+  tooltipMap.forEach(item => {
+    const card = document.querySelector(item.selector);
+    if (card) {
+      card.addEventListener('mouseenter', function() {
+        tooltip.textContent = item.text;
+        tooltip.style.display = 'block';
+      });
+      card.addEventListener('mousemove', function(e) {
+        tooltip.style.left = (e.clientX + 18) + 'px';
+        tooltip.style.top = (e.clientY + 12) + 'px';
+      });
+      card.addEventListener('mouseleave', function() {
+        tooltip.style.display = 'none';
+      });
+    }
+  });
+});

@@ -41,6 +41,9 @@ document.addEventListener("DOMContentLoaded", () => {
             flipbookContainer.style.width = `${flipbookWidth}px`;
             flipbookContainer.style.height = `${flipbookHeight}px`;
 
+            // Force reflow
+            flipbook.offsetHeight;
+
             // Initialize Turn.js
             $(flipbook).turn({
                 width: flipbookWidth,
@@ -67,5 +70,19 @@ document.addEventListener("DOMContentLoaded", () => {
             initializeFlipbook(); // Reinitialize with new dimensions
         });
     }
+    $(flipbook).turn({
+        width: flipbookWidth,
+        height: flipbookHeight,
+        autoCenter: true,
+        elevation: 50,
+        gradients: true,
+        when: {
+            turning: function (event, page, view) {
+                console.log("Turning to page:", page);
+            },
+        },
+    });
+    console.log("Turn.js initialized!");
+    
 });
 
