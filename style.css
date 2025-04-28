@@ -32,6 +32,20 @@ body {
   strong, b {
     font-weight: 700; /* This makes it bold */
   }
+
+  /* Scroll effects*/
+.scroll-fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.4s cubic-bezier(.4,2,.6,1), transform 0.7s cubic-bezier(.4,2,.6,1);
+  will-change: opacity, transform;
+}
+
+/* When in view: visible and in place */
+.scroll-fade-up.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
   
   /* Navbar */
   .navbar {
@@ -138,7 +152,7 @@ body {
 }
 
 .hero-h1-link:hover {
-  color: #ffffff;
+  color: #333;
   text-shadow: 0 12px 24px rgba(143,152,226,0.18), 0 2px 16px #ffffff;
   transform: translateY(-10px) scale(1.04);
 }
@@ -192,10 +206,6 @@ body {
   }
 
   .hero-text a{
-    color: #333;
-  }
-
-  .hero-text a:hover{
     color: #333;
   }
 
@@ -337,7 +347,7 @@ body {
   font-family: 'Inter', sans-serif;
   font-size: 1.5rem;
   font-weight: 400;
-  margin: 1rem 1rem 0.5rem; /* Adjusted margin */
+  margin: 1rem 1rem 0.5rem; 
   color: #111;
 }
 
@@ -425,7 +435,7 @@ color: #515680;
   }
   
   footer {
-    flex-shrink: 0; /* Prevent footer from shrinking */
+    flex-shrink: 0; 
     width: 100%;
     background-color: #222;
     color: white;

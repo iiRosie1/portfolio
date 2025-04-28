@@ -21,3 +21,27 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("footer").innerHTML = data;
       });
   });
+
+  // Tooltip
+  document.addEventListener('DOMContentLoaded', function() {
+    const tooltip = document.getElementById('floating-tooltip');
+
+    // Select all project-content links that go to Roblox
+    const robloxLinks = document.querySelectorAll('.project-content a[href*="roblox.com"]');
+
+    robloxLinks.forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            tooltip.textContent = 'View on Roblox';
+            tooltip.style.display = 'block';
+        });
+
+        link.addEventListener('mousemove', function(e) {
+            tooltip.style.left = (e.clientX + 18) + 'px';
+            tooltip.style.top = (e.clientY + 12) + 'px';
+        });
+
+        link.addEventListener('mouseleave', function() {
+            tooltip.style.display = 'none';
+        });
+    });
+});

@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Watch video tooltip
+// Tool tips
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', function() {
   // Select the Let Us Cook project card (update selector if needed)
@@ -175,3 +175,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+
+// Scroll effects
+function revealOnScroll() {
+  const reveals = document.querySelectorAll('.scroll-fade-up');
+  const windowHeight = window.innerHeight;
+  reveals.forEach(el => {
+    const elementTop = el.getBoundingClientRect().top;
+    if (elementTop < windowHeight - 60) {
+      el.classList.add('in-view');
+    } else {
+      el.classList.remove('in-view');
+    }
+  });
+}
+
+// Run on scroll and on page load
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('DOMContentLoaded', revealOnScroll);

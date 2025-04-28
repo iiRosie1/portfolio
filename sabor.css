@@ -691,3 +691,13 @@ main {
         height: 160px;
     }
 }
+
+/* Tooltip */
+#floating-tooltip {
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+#floating-tooltip[style*="display: block"] {
+    opacity: 0.95;
+}
