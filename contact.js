@@ -15,14 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   });
 
-// Gradient interaction
-  document.addEventListener("mousemove", (e) => {
-    const hero = document.querySelector(".hero");
-    const x = (e.clientX / window.innerWidth) * 100;
-    const y = (e.clientY / window.innerHeight) * 100;
-    hero.style.setProperty("--x", `${x}%`);
-    hero.style.setProperty("--y", `${y}%`);
-  });
   
   //Typing
   class TxtType {
