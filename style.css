@@ -812,3 +812,11 @@ color: #515680;
 #floating-tooltip[style*="display: block"] {
   opacity: 0.95;
 }
+
+/* Small typing text on mobile */
+@media (max-width: 400px) {
+  .typewrite-text h1,
+  .typewrite {
+    font-size: 3rem !important;
+  }
+}
