@@ -193,3 +193,24 @@ function revealOnScroll() {
 // Run on scroll and on page load
 window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('DOMContentLoaded', revealOnScroll);
+
+// Magical Button Scroll Behavior
+document.addEventListener('DOMContentLoaded', function() {
+  const magicalButton = document.querySelector('.magical-button');
+  
+  function checkScroll() {
+    const scrollPosition = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    
+    // Show button when user has scrolled to the bottom
+    if (scrollPosition + windowHeight >= documentHeight - 100) {
+      magicalButton.classList.add('visible');
+    } else {
+      magicalButton.classList.remove('visible');
+    }
+  }
+  
+  window.addEventListener('scroll', checkScroll);
+  checkScroll(); // Check initial position
+});
