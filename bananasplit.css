@@ -222,10 +222,6 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
 
 .hero-card {
     text-align: center;
@@ -846,5 +842,61 @@
         right: 20px;
         width: 45px;
         height: 45px;
+    }
+}
+
+.solution-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(143,152,226,0.10);
+}
+
+
+@media (max-width: 768px) {
+    .solution-image {
+        border-radius: 8px;
+    }
+}
+
+/* Scroll Reveal Animations */
+.card, .finding-item, .features-list li, .learnings-list li, .popout-image, .solution-image {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.card.reveal, .finding-item.reveal, .features-list li.reveal, .learnings-list li.reveal, .popout-image.reveal, .solution-image.reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger the animations */
+.card:nth-child(2) { transition-delay: 0.1s; }
+.card:nth-child(3) { transition-delay: 0.2s; }
+.card:nth-child(4) { transition-delay: 0.3s; }
+.card:nth-child(5) { transition-delay: 0.4s; }
+
+.finding-item:nth-child(1) { transition-delay: 0.1s; }
+.finding-item:nth-child(2) { transition-delay: 0.2s; }
+.finding-item:nth-child(3) { transition-delay: 0.3s; }
+.finding-item:nth-child(4) { transition-delay: 0.4s; }
+
+.features-list li:nth-child(1) { transition-delay: 0.1s; }
+.features-list li:nth-child(2) { transition-delay: 0.2s; }
+.features-list li:nth-child(3) { transition-delay: 0.3s; }
+.features-list li:nth-child(4) { transition-delay: 0.4s; }
+.features-list li:nth-child(5) { transition-delay: 0.5s; }
+
+.learnings-list li:nth-child(1) { transition-delay: 0.1s; }
+.learnings-list li:nth-child(2) { transition-delay: 0.2s; }
+.learnings-list li:nth-child(3) { transition-delay: 0.3s; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card, .finding-item, .features-list li, .learnings-list li, .popout-image, .solution-image {
+        transform: translateY(20px);
     }
 }

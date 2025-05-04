@@ -112,5 +112,30 @@ document.addEventListener("DOMContentLoaded", () => {
     backToTop.addEventListener('click', function() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+  });
 
+// Scroll Reveal Functionality
+function revealOnScroll() {
+    const elements = document.querySelectorAll('.card, .finding-item, .features-list li, .learnings-list li, .popout-image, .solution-image');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('reveal');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    elements.forEach(element => {
+        observer.observe(element);
+    });
+}
+
+// Initialize scroll reveal when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    revealOnScroll();
 });
