@@ -206,7 +206,7 @@
 .slides-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 6rem 2rem;
+    padding: 2rem;
 }
 
 .slide {
@@ -320,5 +320,63 @@
         right: 20px;
         width: 45px;
         height: 45px;
+    }
+}
+
+/* Project Info Section */
+.project-info {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    color: white;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.info-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.info-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: white;
+    opacity: 0.9;
+}
+
+.info-text {
+    font-size: 1rem;
+    font-weight: 300;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .project-info {
+        padding: 1.5rem;
+    }
+    
+    .info-row {
+        gap: 1.5rem;
+    }
+    
+    .info-group {
+        flex: 1 1 calc(50% - 1.5rem);
+        min-width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .info-group {
+        flex: 1 1 100%;
     }
 }

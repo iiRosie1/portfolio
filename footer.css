@@ -1,0 +1,76 @@
+/* Footer */
+.footer {
+    flex-shrink: 0;
+    width: 100%;
+    background-color: #222;
+    color: white;
+    padding: 1.5rem 0;
+    position: relative;
+    z-index: 2;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.copyright {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #fff;
+}
+
+.footer-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    text-decoration: none;
+    color: white;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.footer-button i {
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.email-button:hover {
+    background: #8F98E2;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(143, 152, 226, 0.3);
+}
+
+.linkedin-button:hover {
+    background: #0077b5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 119, 181, 0.3);
+}
+
+.footer-button:hover i {
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .footer-buttons {
+        justify-content: center;
+    }
+}
