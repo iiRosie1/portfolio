@@ -17,23 +17,23 @@ document.addEventListener("DOMContentLoaded", () => {
     // Wait for the DOM to fully load before initializing Turn.js
     const flipbook = document.querySelector(".flipbook");
 
-    // Ensure the flipbook exists before initializing Turn.js
+    
     if (flipbook) {
         const initializeFlipbook = () => {
             const screenWidth = window.innerWidth;
 
-            // Adjust flipbook size based on screen width
+            
             let flipbookWidth = 800;
-            let flipbookHeight = 500; // Default aspect ratio: 16:10
+            let flipbookHeight = 518;
 
             if (screenWidth <= 768) {
                 flipbookWidth = 600;
-                flipbookHeight = flipbookWidth * 0.625; // Maintain aspect ratio
+                flipbookHeight = flipbookWidth * 0.6875; 
             }
 
             if (screenWidth <= 480) {
                 flipbookWidth = 320;
-                flipbookHeight = flipbookWidth * 0.625; // Maintain aspect ratio
+                flipbookHeight = flipbookWidth * 0.6875; 
             }
 
             // Set the container's dimensions
@@ -44,13 +44,15 @@ document.addEventListener("DOMContentLoaded", () => {
             // Force reflow
             flipbook.offsetHeight;
 
-            // Initialize Turn.js
+            // Initialize Turn.js with adjusted settings
             $(flipbook).turn({
                 width: flipbookWidth,
                 height: flipbookHeight,
                 autoCenter: true,
                 elevation: 50,
                 gradients: true,
+                display: 'double',
+                acceleration: true,
                 when: {
                     turning: function (event, page, view) {
                         console.log("Turning to page:", page);
@@ -70,19 +72,5 @@ document.addEventListener("DOMContentLoaded", () => {
             initializeFlipbook(); // Reinitialize with new dimensions
         });
     }
-    $(flipbook).turn({
-        width: flipbookWidth,
-        height: flipbookHeight,
-        autoCenter: true,
-        elevation: 50,
-        gradients: true,
-        when: {
-            turning: function (event, page, view) {
-                console.log("Turning to page:", page);
-            },
-        },
-    });
-    console.log("Turn.js initialized!");
-    
 });
 
