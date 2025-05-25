@@ -2,12 +2,19 @@
 
 // Load navbar and footer into every page
 document.addEventListener("DOMContentLoaded", () => {
+    // Load navbar
     fetch("navbar.html")
       .then((res) => res.text())
       .then((data) => {
-        document.getElementById("navbar").innerHTML = data;
+        const navbar = document.getElementById("navbar");
+        navbar.innerHTML = data;
+        // Add loaded class after a small delay to ensure CSS is applied
+        requestAnimationFrame(() => {
+          navbar.classList.add('loaded');
+        });
       });
   
+    // Load footer
     fetch("footer.html")
       .then((res) => res.text())
       .then((data) => {

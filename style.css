@@ -118,6 +118,7 @@ body {
     max-width: 800px; 
     margin: 0 auto; 
     text-align: left; 
+    padding-top: 5px;
   }
 
   .hero-button {
@@ -706,4 +707,14 @@ color: #515680;
     bottom: 1.5rem;
     right: 1.5rem;
   }
+}
+
+/* Navbar Loading State */
+#navbar {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#navbar.loaded {
+    opacity: 1;
 }

@@ -960,7 +960,7 @@ footer p {
 }
 
 
-/* Hover effects */
+
 .cta-card:hover .icon-wrapper::before,
 .contact-card:hover .icon-wrapper::before {
     opacity: 1;
@@ -971,7 +971,6 @@ footer p {
     color: #515680;
 }
 
-/* For the larger icons in the contact page */
 .contact-card .icon-wrapper {
     width: 70px;
     height: 70px;
@@ -981,3 +980,29 @@ footer p {
     font-size: 1.8rem;
 }
 
+.sabor-link {
+    color: #8F98E2;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.sabor-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background: linear-gradient(90deg, #e4c8ff, #8F98E2);
+    transition: width 0.3s ease;
+    border-radius: 2px;
+}
+
+.sabor-link:hover {
+    color: #515680;
+}
+
+.sabor-link:hover::after {
+    width: 100%;
+}
