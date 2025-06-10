@@ -61,4 +61,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+// Photo Gallery Scroll Reveal
+function revealGalleryOnScroll() {
+    const gallery = document.querySelector('.gallery-container');
+    if (!gallery) return;
+
+    const galleryTop = gallery.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (galleryTop < windowHeight - 100) {
+        gallery.classList.add('reveal');
+    }
+}
+
+window.addEventListener('scroll', revealGalleryOnScroll);
+window.addEventListener('DOMContentLoaded', revealGalleryOnScroll);
   
