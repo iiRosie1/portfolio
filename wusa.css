@@ -1,0 +1,222 @@
+body {
+    background-color: #fafafa;
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.slides-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.section-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #333;
+    margin: 3rem 0 1.5rem;
+    padding-left: 0.5rem;
+}
+
+.image-row {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.image-row .slide {
+    flex: 1;
+    min-width: 300px;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.slide {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background: white;
+    transition: box-shadow 0.3s ease;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .slides-container {
+        padding: 4rem 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.25rem;
+        margin: 2rem 0 1rem;
+    }
+
+    .image-row {
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .image-row .slide {
+        min-width: 100%;
+    }
+}
+
+/* Update navbar styles */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.98);
+    border-bottom: 1px solid rgba(221, 221, 221, 0.5);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Add these styles */
+.slide-link {
+    display: block;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.slide-link:hover {
+    transform: translateY(-5px);
+}
+
+.slide-link .slide {
+    margin-bottom: 4rem;
+}
+
+/* Update existing slide styles to work with links */
+.slide {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background: white;
+    transition: box-shadow 0.3s ease;
+}
+
+.slide-link:hover .slide {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Add scroll to top button styles */
+.scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: white;
+    border: none;
+    border-radius: 50%;
+    color: #8F98E2;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.scroll-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-top:hover {
+    background: #8F98E2;
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.scroll-top i {
+    transition: transform 0.3s ease;
+}
+
+.scroll-top:hover i {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .scroll-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+}
+
+/* Project Info Section */
+.project-info {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    color: #333;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.info-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.info-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #333;
+    opacity: 0.9;
+}
+
+.info-text {
+    font-size: 1rem;
+    font-weight: 300;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .project-info {
+        padding: 1.5rem;
+    }
+    
+    .info-row {
+        gap: 1.5rem;
+    }
+    
+    .info-group {
+        flex: 1 1 calc(50% - 1.5rem);
+        min-width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .info-group {
+        flex: 1 1 100%;
+    }
+}

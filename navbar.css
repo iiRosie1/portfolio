@@ -6,7 +6,7 @@
     border-bottom: 1px solid rgba(221, 221, 221, 0.5);
     z-index: 1000;
     backdrop-filter: blur(8px);
-    transition: box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .navbar:hover {
@@ -119,6 +119,7 @@
 
 .nav-links .dropdown-content {
     display: none;
+    /* Commenting out dropdown functionality
     position: absolute;
     background-color: #fff;
     min-width: 180px;
@@ -127,6 +128,7 @@
     margin-top: 8px;
     border-radius: 4px;
     padding: 0;
+    */
 }
 
 .nav-links .dropdown-content li {
@@ -146,6 +148,7 @@
     color: #8F98E2;
 }
 
+/* Commenting out dropdown hover behavior
 .nav-links .dropdown:hover .dropdown-content {
     display: block;
 }
@@ -153,6 +156,7 @@
 .nav-links .dropdown:hover > .dropbtn {
     color: #8F98E2;
 }
+*/
 
 /* Responsive adjustments */
 @media (max-width: 768px) {

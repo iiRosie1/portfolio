@@ -1,0 +1,138 @@
+.projects-page {
+    padding: 2rem;
+    background-color: #fafafa;
+}
+
+.projects-section {
+    margin-bottom: 4rem;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.projects-section h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #666666;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.scroll-container {
+    width: 100%;
+    overflow-x: auto;
+    padding: 1rem 0;
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.project-row {
+    display: flex;
+    gap: 2rem;
+    padding: 0 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-card {
+    flex: 0 0 calc(50% - 1rem);
+    max-width: calc(50% - 1rem);
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.project-card img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover img {
+    transform: scale(1.02);
+}
+
+.project-card h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 400;
+    margin: 1.5rem;
+    color: #111;
+}
+
+.project-card p {
+    font-size: 1.1rem;
+    margin: 0 1.5rem 1.5rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .project-card img {
+        height: 300px;
+    }
+
+    .project-card h3 {
+        font-size: 1.5rem;
+        margin: 1.25rem;
+    }
+
+    .project-card p {
+        font-size: 1rem;
+        margin: 0 1.25rem 1.25rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-page {
+        padding: 1rem;
+    }
+
+    .project-card {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .project-card img {
+        height: 200px;
+    }
+
+    .project-card h3 {
+        font-size: 1.25rem;
+        margin: 1rem;
+    }
+
+    .project-card p {
+        font-size: 0.95rem;
+        margin: 0 1rem 1rem;
+    }
+}
+
+/* For screens larger than 1200px, center the content */
+@media (min-width: 1200px) {
+    .scroll-container {
+        overflow-x: hidden;
+    }
+    
+    .project-row {
+        justify-content: center;
+    }
+}
