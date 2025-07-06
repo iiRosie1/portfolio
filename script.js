@@ -31,17 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
     hero.style.setProperty("--y", `${y}%`);
   });
 
-  //View My Work button
-  const heroButton = document.querySelector('.hero-button');
-  if (heroButton) {
-    heroButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      document.querySelector('#projects').scrollIntoView({
-        behavior: 'smooth'
-      });
-    });
-  }
-
   //Typewriter effect
   class TxtType {
     constructor(el, toRotate, period) {

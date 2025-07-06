@@ -138,6 +138,7 @@ body {
     text-decoration: none;
     transition: all 0.3s ease;
     align-items: center;
+    color: #333;
   }
   
   .hero-button:hover {
@@ -721,4 +722,9 @@ color: #515680;
 
 #navbar.loaded {
     opacity: 1;
+}
+
+/* View More Container */
+.view-more-container {
+  text-align: center;
 }
