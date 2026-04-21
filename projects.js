@@ -1,36 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const scrollContainers = document.querySelectorAll('.scroll-container');
-    
-    scrollContainers.forEach(container => {
-        let isDown = false;
-        let startX;
-        let scrollLeft;
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card[data-categories]');
 
-        container.addEventListener('mousedown', (e) => {
-            isDown = true;
-            container.style.cursor = 'grabbing';
-            startX = e.pageX - container.offsetLeft;
-            scrollLeft = container.scrollLeft;
+    let activeCategory = 'all';
+
+    const applyFilter = () => {
+        projectCards.forEach((card) => {
+            const categories = (card.dataset.categories || '').split(' ').filter(Boolean);
+            const hideOnAll = card.dataset.hideOnAll === 'true';
+            const shouldShow =
+                activeCategory === 'all'
+                    ? !hideOnAll
+                    : categories.includes(activeCategory);
+            card.classList.toggle('is-hidden', !shouldShow);
         });
 
-        container.addEventListener('mouseleave', () => {
-            isDown = false;
-            container.style.cursor = 'grab';
+        filterButtons.forEach((btn) => {
+            const isActive = btn.dataset.category === activeCategory;
+            btn.classList.toggle('active', isActive);
         });
+    };
 
-        container.addEventListener('mouseup', () => {
-            isDown = false;
-            container.style.cursor = 'grab';
-        });
-
-        container.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - container.offsetLeft;
-            const walk = (x - startX) * 2;
-            container.scrollLeft = scrollLeft - walk;
+    filterButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            activeCategory = button.dataset.category || 'all';
+            applyFilter();
         });
     });
+
+    applyFilter();
 
     // Scroll to top button functionality
     const scrollButton = document.getElementById('scroll-top');
