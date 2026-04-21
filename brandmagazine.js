@@ -1,76 +1,126 @@
 // Load navbar and footer into every page
 document.addEventListener("DOMContentLoaded", () => {
-    // Load the navbar
-    fetch("navbar.html")
-        .then((res) => res.text())
-        .then((data) => {
-            document.getElementById("navbar").innerHTML = data;
-        });
-
-    // Load the footer
-    fetch("footer.html")
-        .then((res) => res.text())
-        .then((data) => {
-            document.getElementById("footer").innerHTML = data;
-        });
-
-    // Wait for the DOM to fully load before initializing Turn.js
     const flipbook = document.querySelector(".flipbook");
+    const mainEl = document.querySelector("main");
 
-    
-    if (flipbook) {
-        const initializeFlipbook = () => {
-            const screenWidth = window.innerWidth;
+    const ASPECT = 518 / 800;
+    const MIN_WIDTH = 220;
 
-            
-            let flipbookWidth = 800;
-            let flipbookHeight = 518;
+    let resizeTimer = null;
+    let lastW = 0;
+    let lastH = 0;
 
-            if (screenWidth <= 768) {
-                flipbookWidth = 600;
-                flipbookHeight = flipbookWidth * 0.6875; 
-            }
+    const computeFlipbookSize = () => {
+        const container = document.querySelector(".flipbook-container");
+        const hint = document.querySelector(".hover-text");
+        const flipbookInner = document.querySelector(".flipbook-inner");
+        if (!container || !flipbookInner) return null;
 
-            if (screenWidth <= 480) {
-                flipbookWidth = 320;
-                flipbookHeight = flipbookWidth * 0.6875; 
-            }
+        const styles = getComputedStyle(container);
+        const gap =
+            parseFloat(styles.rowGap) ||
+            parseFloat(styles.columnGap) ||
+            parseFloat(styles.gap) ||
+            8;
 
-            // Set the container's dimensions
-            const flipbookContainer = document.querySelector(".flipbook-container");
-            flipbookContainer.style.width = `${flipbookWidth}px`;
-            flipbookContainer.style.height = `${flipbookHeight}px`;
+        const availW = container.clientWidth;
+        const hintH = hint ? hint.offsetHeight : 0;
+        const availH = Math.max(80, container.clientHeight - hintH - gap);
 
-            // Force reflow
-            flipbook.offsetHeight;
+        if (availW < 1) return null;
 
-            // Initialize Turn.js with adjusted settings
-            $(flipbook).turn({
-                width: flipbookWidth,
-                height: flipbookHeight,
-                autoCenter: true,
-                elevation: 50,
-                gradients: true,
-                display: 'double',
-                acceleration: true,
-                when: {
-                    turning: function (event, page, view) {
-                        console.log("Turning to page:", page);
-                    },
+        let width = Math.min(availW, 800);
+        let height = width * ASPECT;
+
+        if (height > availH) {
+            height = availH;
+            width = height / ASPECT;
+        }
+
+        width = Math.floor(Math.max(MIN_WIDTH, Math.min(width, availW)));
+        height = Math.floor(width * ASPECT);
+
+        return { width, height, flipbookInner };
+    };
+
+    const initializeFlipbook = () => {
+        if (!flipbook) return;
+
+        const dims = computeFlipbookSize();
+        if (!dims) return;
+
+        const { width, height, flipbookInner } = dims;
+
+        if (
+            $(flipbook).data("turn") &&
+            Math.abs(width - lastW) < 2 &&
+            Math.abs(height - lastH) < 2
+        ) {
+            return;
+        }
+
+        lastW = width;
+        lastH = height;
+
+        if ($(flipbook).data("turn")) {
+            $(flipbook).turn("destroy");
+        }
+
+        flipbookInner.style.width = `${width}px`;
+        flipbookInner.style.height = `${height}px`;
+
+        flipbook.offsetHeight;
+
+        $(flipbook).turn({
+            width,
+            height,
+            autoCenter: true,
+            elevation: 50,
+            gradients: true,
+            display: "double",
+            acceleration: true,
+            when: {
+                turning: function (event, page, view) {
+                    console.log("Turning to page:", page);
                 },
-            });
-        };
-
-        // Initialize the flipbook
-        initializeFlipbook();
-
-        // Reinitialize the flipbook on window resize
-        window.addEventListener("resize", () => {
-            if ($(flipbook).data("turn")) {
-                $(flipbook).turn("destroy"); // Destroy the existing flipbook
-            }
-            initializeFlipbook(); // Reinitialize with new dimensions
+            },
         });
+    };
+
+    const scheduleFlipbookResize = () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            initializeFlipbook();
+        }, 80);
+    };
+
+    Promise.all([
+        fetch("navbar.html")
+            .then((res) => res.text())
+            .then((data) => {
+                document.getElementById("navbar").innerHTML = data;
+            }),
+        fetch("footer.html")
+            .then((res) => res.text())
+            .then((data) => {
+                document.getElementById("footer").innerHTML = data;
+            }),
+    ])
+        .catch(() => {})
+        .finally(() => {
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    initializeFlipbook();
+                });
+            });
+        });
+
+    if (!flipbook) return;
+
+    window.addEventListener("resize", scheduleFlipbookResize);
+
+    if (mainEl && typeof ResizeObserver !== "undefined") {
+        const ro = new ResizeObserver(() => scheduleFlipbookResize());
+        ro.observe(mainEl);
     }
 });
-
