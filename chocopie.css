@@ -321,12 +321,45 @@
     transform: translateY(-2px);
 }
 
+.full-rebrand-cta {
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.full-rebrand-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.08);
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.full-rebrand-link:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.9);
+}
+
 @media (max-width: 768px) {
     .scroll-top {
         bottom: 20px;
         right: 20px;
         width: 45px;
         height: 45px;
+    }
+
+    .full-rebrand-cta {
+        margin-bottom: 2rem;
+        padding: 0 1rem;
     }
 }
 
