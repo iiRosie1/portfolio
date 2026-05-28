@@ -1,66 +1,32 @@
 // Load navbar and footer into every page
 document.addEventListener("DOMContentLoaded", () => {
     const flipbook = document.querySelector(".flipbook");
-    const mainEl = document.querySelector("main");
+    const flipbookInner = document.querySelector(".flipbook-inner");
+
+    if (!flipbook || !flipbookInner) return;
 
     const ASPECT = 518 / 800;
-    const MIN_WIDTH = 220;
 
-    let resizeTimer = null;
-    let lastW = 0;
-    let lastH = 0;
+    const getFlipbookDimensions = () => {
+        const screenWidth = window.innerWidth;
+        let width = 800;
+        let height = 518;
 
-    const computeFlipbookSize = () => {
-        const container = document.querySelector(".flipbook-container");
-        const hint = document.querySelector(".hover-text");
-        const flipbookInner = document.querySelector(".flipbook-inner");
-        if (!container || !flipbookInner) return null;
-
-        const styles = getComputedStyle(container);
-        const gap =
-            parseFloat(styles.rowGap) ||
-            parseFloat(styles.columnGap) ||
-            parseFloat(styles.gap) ||
-            8;
-
-        const availW = container.clientWidth;
-        const hintH = hint ? hint.offsetHeight : 0;
-        const availH = Math.max(80, container.clientHeight - hintH - gap);
-
-        if (availW < 1) return null;
-
-        let width = Math.min(availW, 800);
-        let height = width * ASPECT;
-
-        if (height > availH) {
-            height = availH;
-            width = height / ASPECT;
+        if (screenWidth <= 768) {
+            width = 600;
+            height = Math.round(width * ASPECT);
         }
 
-        width = Math.floor(Math.max(MIN_WIDTH, Math.min(width, availW)));
-        height = Math.floor(width * ASPECT);
+        if (screenWidth <= 480) {
+            width = 320;
+            height = Math.round(width * ASPECT);
+        }
 
-        return { width, height, flipbookInner };
+        return { width, height };
     };
 
     const initializeFlipbook = () => {
-        if (!flipbook) return;
-
-        const dims = computeFlipbookSize();
-        if (!dims) return;
-
-        const { width, height, flipbookInner } = dims;
-
-        if (
-            $(flipbook).data("turn") &&
-            Math.abs(width - lastW) < 2 &&
-            Math.abs(height - lastH) < 2
-        ) {
-            return;
-        }
-
-        lastW = width;
-        lastH = height;
+        const { width, height } = getFlipbookDimensions();
 
         if ($(flipbook).data("turn")) {
             $(flipbook).turn("destroy");
@@ -79,19 +45,13 @@ document.addEventListener("DOMContentLoaded", () => {
             gradients: true,
             display: "double",
             acceleration: true,
-            when: {
-                turning: function (event, page, view) {
-                    console.log("Turning to page:", page);
-                },
-            },
         });
     };
 
-    const scheduleFlipbookResize = () => {
+    let resizeTimer = null;
+    const onResize = () => {
         clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => {
-            initializeFlipbook();
-        }, 80);
+        resizeTimer = setTimeout(initializeFlipbook, 150);
     };
 
     Promise.all([
@@ -109,18 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(() => {})
         .finally(() => {
             requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
-                    initializeFlipbook();
-                });
+                initializeFlipbook();
             });
         });
 
-    if (!flipbook) return;
-
-    window.addEventListener("resize", scheduleFlipbookResize);
-
-    if (mainEl && typeof ResizeObserver !== "undefined") {
-        const ro = new ResizeObserver(() => scheduleFlipbookResize());
-        ro.observe(mainEl);
-    }
+    window.addEventListener("resize", onResize);
 });
